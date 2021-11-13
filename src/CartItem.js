@@ -1,13 +1,8 @@
-import React, { Component } from 'react'
-import { useGlobalContext, AppContext, AppProvider } from "./context";
-
-
+import React, { Component, useState } from 'react'
+import { useGlobalContext, AppContext,AppProvider} from "./context";
 
 class CartItem extends Component {
-    static context = AppContext;
-    static provider = AppProvider;
-    static useGC = useGlobalContext;
-
+    
     constructor(props){
         super(props)
         this.state = {
@@ -22,9 +17,7 @@ class CartItem extends Component {
 
     componentDidUpdate() {
         if(this.state.count === 0){
-            const { cart } = useGlobalContext();
-            console.log("cart: " + cart.removeItem.src)
-            cart.removeItem(this)
+            this.context.removeItem(this.state.id)
         }
       }
 
@@ -59,10 +52,11 @@ class CartItem extends Component {
                 <button className="amount-btn" onClick={this.decrement}><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'>
                     <path d='M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z' />
                 </svg></button>
-                
             </div>
         )
     }
 }
+
+CartItem.contextType = AppContext;
 
 export default CartItem

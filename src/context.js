@@ -5,7 +5,8 @@ import reducer from './reducer'
 // ATTENTION!!!!!!!!!!
 // I SWITCHED TO PERMANENT DOMAIN
 const url = 'https://course-api.com/react-useReducer-cart-project'
-const AppContext = React.createContext()
+const AppContext = React.createContext();
+
 
 const AppProvider = ({ children }) => {
 
@@ -30,7 +31,11 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
-        cart,
+        cart: cart,
+        removeItem: id => {
+          const newCart = cart.filter((item) => item.id !== id);
+          setCart(newCart);
+        }
       }}
     >
       {children}

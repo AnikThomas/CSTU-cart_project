@@ -1,8 +1,6 @@
 import React from "react";
 import CartItem from './CartItem'
-import { useGlobalContext } from "./context";
-
-
+import { useGlobalContext} from "./context";
 
 
 
@@ -30,7 +28,12 @@ const CartContainer = () => {
       <div>
         {cart.map((item) => {
           item.cart = cart;
-           return <CartItem key={item.id} {...item} />;
+           return (
+              <CartItem key={item.id} {...item} />
+            
+           )
+           
+           
         })}
       </div>
       {/* cart footer */}
