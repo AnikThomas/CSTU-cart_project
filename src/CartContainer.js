@@ -3,7 +3,6 @@ import CartItem from './CartItem'
 import { useGlobalContext} from "./context";
 
 
-
 const CartContainer = () => {
   const { cart } = useGlobalContext();
   
@@ -31,9 +30,7 @@ const CartContainer = () => {
            return (
               <CartItem key={item.id} {...item} />
             
-           )
-           
-           
+           )  
         })}
       </div>
       {/* cart footer */}

@@ -9,10 +9,8 @@ class CartItem extends Component {
             ...props,
             count: props.amount
         }
-        
         this.increment = this.increment.bind(this);
-        this.decrement = this.decrement.bind(this);
-        this.removeItem = this.removeItem.bind(this);
+        this.decrement = this.decrement.bind(this);  
     }
 
     componentDidUpdate() {
@@ -32,13 +30,8 @@ class CartItem extends Component {
             count: prevState.count - 1
         }))
     }
-    removeItem(){
-        this.setState((prevState)=>({
-            count: 0
-        }))
-    }
+  
     render() {
-
         return (
             <div>
                 <h4>{this.state.title}</h4>
@@ -59,4 +52,4 @@ class CartItem extends Component {
 
 CartItem.contextType = AppContext;
 
-export default CartItem
+export default CartItem;
