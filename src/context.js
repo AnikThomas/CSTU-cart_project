@@ -40,7 +40,16 @@ const AppProvider = ({ children }) => {
       .filter((item) => item.amount > 0) //If quantity is 0 remove it from the array
   )
 
+  const count = () => cart.map((item) => {
+      return item.amount;
+  }).reduce((total, num) => total + num, 0);
+    
+
   const clearCart = () => setCart([]);
+
+  // const addItem = payload => setCart([...cart,payload])
+
+
   return (
     <AppContext.Provider value={{
         //Function that Defined above
@@ -49,6 +58,9 @@ const AppProvider = ({ children }) => {
         increment,
         decrement,
         clearCart,
+        count,
+        
+        
     }}>
         {children}
     </AppContext.Provider>
